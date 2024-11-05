@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+read test @@@@@
+
+<div class="card-body">
+    <div class="input-group mb-3">
+        <span class="input-group-text">StudyBoardId</span>
+        <input type="text" class="form-control" th:value="${studyBoardDTO.studyBoardId}" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text">Title</span>
+        <input type="text" class="form-control" th:value="${studyBoardDTO.title}" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text">Content</span>
+        <textarea class="form-control col-sm-5" rows="5" readonly>[[${studyBoardDTO.content}]]</textarea>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text">VisitCount</span>
+        <input type="text" class="form-control" th:value="${studyBoardDTO.visitcount}" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text">RegDate</span>
+        <input type="text" class="form-control" th:value="${#temporals.format(studyBoardDTO.regDate, 'yyyy-MM-dd HH:mm:ss')}" readonly>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text">ModDate</span>
+        <input type="text" class="form-control" th:value="${#temporals.format(studyBoardDTO.modDate, 'yyyy-MM-dd HH:mm:ss')}" readonly>
+    </div>
+</div>
+
+<a th:href="@{'/studyboard/modify?studyBoardId=' + ${studyBoardDTO.studyBoardId}}" class="btn btn-primary">수정하러 가기</a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="content">
+  <h2>커뮤니티 게시판</h2>
+  <a th:href="@{/studyboard/register}">글 쓰기</a>
+  <table>
+    <thead>
+    <tr>
+      <th>번호</th>
+      <th>제목</th>
+      <th>내용</th>
+      <th>조회수</th>
+      <th>작성 날짜</th>
+      <th>수정 날짜</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dto : ${studyBoardDTOS}">
+      <td th:text="${dto.studyBoardId}">번호</td>
+      <td>
+        <a th:href="@{/studyboard/read(studyBoardId=${dto.studyBoardId})}" th:text="${dto.title}">제목</a>
+      </td>
+      <td th:text="${dto.content}">내용</td>
+      <td th:text="${dto.visitcount}">조회수</td>
+      <td th:text="${dto.regDate}">조회수</td>
+      <td th:text="${dto.modDate}">조회수</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
